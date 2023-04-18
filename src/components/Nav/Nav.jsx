@@ -22,14 +22,18 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.id && (
+        {user.id && user.access_level === "vendor" && (
           <>
-            <Link className="navLink" to="/user">
-              Home
+            <Link className="navLink" to="/addNewItem">
+              Add New Item
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Profile
+            </Link>
+
+            <Link className="navLink" to="/user">
+              Account
             </Link>
 
             <LogOutButton className="navLink" />

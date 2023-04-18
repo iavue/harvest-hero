@@ -5,13 +5,13 @@ import React from 'react';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is
 
-function InfoPage() {
+function AddNewItem() {
   return (
     <div className="container">
-      <p>Profile</p>
+      <p>Add new item here!</p>
 
     </div>
   );
 }
 
-export default InfoPage;
+export default AddNewItem;
