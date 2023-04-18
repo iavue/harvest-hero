@@ -55,12 +55,13 @@ function RegisterForm() {
       </div>
       <div>
         <label htmlFor="accountType">
-          Select Account:
+          Account Type:
           <select
             name="accountType"
             value={accountType}
             required
             onChange={(event) => setAccountType(event.target.value)}>
+              <option value="" disabled selected> -- select an option -- </option>
               <option value="customer">Customer</option>
               <option value="vendor">Vendor</option>
           </select>
