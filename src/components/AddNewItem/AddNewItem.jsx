@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // This is one of our simplest components
@@ -8,15 +9,18 @@ import { useHistory } from 'react-router-dom';
 
 function AddNewItem() {
 
-    let [newItem, setNewItem] = useState({ title: '', description: '', dateHarvested: '' });
+    let [newItem, setNewItem] = useState({ title: '', description: ''});
     // const [title, setTitle] = useState('');
     // const [description, setDescription] = useState('');
     // const [dateHarvested, setDateHarvested] = useState('');
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const submitHandler = (event) => {
         console.log('Inside submitHandler()!!!');
         event.preventDefault();
-        if (newItem.title && newItem.description && newItem.dateHarvested) {
+        if (newItem.title && newItem.description) {
             dispatch({ type: 'ADD_ITEM', payload: newItem });
             history.push('/profile');
         }
@@ -30,9 +34,6 @@ function AddNewItem() {
                 break;
             case '2':
                 setNewItem({ ...newItem, description: event.target.value })
-                break;
-            case '3':
-                setNewItem({ ...newItem, dateHarvested: event.target.value })
                 break;
             default:
                 console.log('Missing Input');
@@ -53,7 +54,6 @@ function AddNewItem() {
 
             <input id='1' placeholder="title" value={newItem.title} onChange={setItem}></input>
             <input id='2' placeholder="description" value={newItem.description} onChange={setItem}></input>
-            <input id='3' type="date" placeholder="date harvested" value={newItem.dateHarvested} onChange={setItem}></input>
             <button type="submit">Add Item</button>
 
             {/* </div> */}

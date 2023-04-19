@@ -10,6 +10,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 // TO DO: add const for CRUD route/s
+const items = require('./routes/items.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -25,6 +26,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 // TO DO: add route/s here for all the CRUD (GET, POST, PUT, DELETE)
+app.use('/api/items', items);
 
 // Serve static files
 app.use(express.static('build'));

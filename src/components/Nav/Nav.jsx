@@ -28,7 +28,7 @@ function Nav() {
               Add New Item
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/profile">
               Profile
             </Link>
 
