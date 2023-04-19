@@ -6,6 +6,7 @@ function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
+  // const accessLevel = useSelector(store => store.user.access_level);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -17,6 +18,7 @@ function LoginForm() {
         payload: {
           username: username,
           password: password,
+          // accessLevel: accessLevel, STRETCH: will need to ensure we are sending the accessLevel (without this, nothing breaks anyway)
         },
       });
     } else {

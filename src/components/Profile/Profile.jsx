@@ -81,8 +81,8 @@ function Profile() {
                 </li>
             )) // end .map()
         ) : (
-            <li>Page loading...</li>
-            // Return "Page loading..." if filteredItems.length is not true (does not have anything inside the 'filteredItemsDou' array)
+            <p>0 items in your catalog</p>
+            // Return "0 items in your catalog" if filteredItems.length is not true (does not have anything inside the 'filteredItemsDou' array)
         );
     };
     return <ul>{render()}</ul>;

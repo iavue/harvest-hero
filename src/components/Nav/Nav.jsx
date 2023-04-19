@@ -21,8 +21,8 @@ function Nav() {
           </Link>
         )}
 
-        {/* If a user is logged in, show these links */}
-        {user.id && user.access_level === "vendor" && (
+        {/* If a user is logged in and their access level is vendor, show these links */}
+        {user.access_level === "vendor" && user.id && (
           <>
             <Link className="navLink" to="/addNewItem">
               Add New Item
@@ -40,9 +40,29 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
+        {/* If a user is logged in and their access level is customer, show these links */}
+        {user.access_level === "customer" && user.id && (
+          <>
+            <Link className="navLink" to="/main">
+              Main
+            </Link>
+
+            <Link className="navLink" to="/favorites">
+              Favorites
+            </Link>
+
+            <Link className="navLink" to="/user">
+              Account
+            </Link>
+
+            <LogOutButton className="navLink" />
+          </>
+        )}
+
+        {/* Gonna go ahead and get rid of /about for now */}
+        {/* <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddNewItem from '../AddNewItem/AddNewItem';
+import Main from '../Main/Main';
+import Favorites from '../Favorites/Favorites';
 
 import './App.css';
 
@@ -62,7 +64,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows Profile else shows LoginPage
             exact
             path="/profile"
           >
@@ -77,14 +79,32 @@ function App() {
             <AddNewItem />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows Main else shows LoginPage
+            exact
+            path="/main"
+          >
+            <Main />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Favorites else shows LoginPage
+            exact
+            path="/favorites"
+          >
+            <Favorites />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+            {user.access_level === 'vendor' && user.id ?
+              // If the user is already logged in and their access level is vendor, 
+              // redirect to the /profile page
+              <Redirect to="/profile" />
+              : user.access_level === 'customer' && user.id ?
+              <Redirect to="/main" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -95,10 +115,12 @@ function App() {
             exact
             path="/registration"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+            {user.access_level === 'vendor' && user.id ?
+              // If the user is already logged in and their access level is vendor, 
+              // redirect them to the /profile page
+              <Redirect to="/profile" />
+              : user.access_level === 'customer' && user.id ?
+              <Redirect to="/main" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -109,10 +131,12 @@ function App() {
             exact
             path="/home"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+            {user.access_level === 'vendor' && user.id ?
+              // If the user is already logged in and their access level is vendor, 
+              // redirect them to the /profile page
+              <Redirect to="/profile" />
+              : user.access_level === 'customer' && user.id ?
+              <Redirect to="/main" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
