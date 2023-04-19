@@ -24,6 +24,8 @@ function* fetchItems() {
 function* editItem(action) {
     try{
         yield axios.put(`/api/items/${action.payload.id}`, action.payload)//this is a actual put request
+        console.log('What is action.payload.id:', action.payload.id);
+        console.log('What is action.payload:', action.payload);
         yield put({type: 'FETCH_ITEMS'})//this is a dispatch
     }catch(error){
         console.log(error)
@@ -34,7 +36,7 @@ function* deleteItem(action) {
     try {
         yield axios.delete(`/api/items/${action.payload}`);
 
-        yield put({type: 'FETCH_SHELF'})
+        yield put({type: 'FETCH_ITEMS'})
         
     }catch (error) {
         console.log('Error:', error);
