@@ -5,6 +5,18 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
+router.get('/', rejectUnauthenticated, (req, res) => {
+    const userId = req.user.id;
+    console.log('What is req.user.id in my bio.router:', userId);
+    pool
+      .query(`SELECT * FROM "vendorprofile" WHERE user_id = ${userId}`) // TO DO: create query
+      .then((results) => res.send(results.rows))
+      .catch((error) => {
+        console.log('Error making SELECT:', error);
+        res.sendStatus(500);
+      });
+  });
+
 router.post('/', (req, res) => {
     // POST route code here
     const newBio = req.body;
