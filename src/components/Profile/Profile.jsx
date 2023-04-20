@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import VendorBioForm from '../VendorBioForm/VendorBioForm';
+import BioDisplay from '../BioDisplay/BioDisplay';
 import VendorsItemsList from '../VendorsItemsList/VendorsItemsList';
 
 // This is one of our simplest components
@@ -12,8 +12,7 @@ function Profile() {
 
     return (
         <>
-        <VendorBioForm />
-        
+        <BioDisplay />
         <VendorsItemsList />
         </>
     )
