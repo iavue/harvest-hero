@@ -15,8 +15,9 @@ function VendorBioForm() {
     const dispatch = useDispatch();
 
     const submitHandler = (event) => {
-        console.log('Inside submitHandler()!!!');
+        console.log('Inside submitHandler() for VendorBioForm!!!');
         event.preventDefault();
+        console.log('What is inside my newBio for VendorBioForm:', newBio);
         if (newBio.vendor_name && newBio.bio_description && newBio.location && newBio.pmt_methods && newBio.stall_num) {
             dispatch({ type: 'ADD_BIO', payload: newBio });
         }
