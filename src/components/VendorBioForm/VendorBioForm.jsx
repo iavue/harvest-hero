@@ -57,6 +57,20 @@ function VendorBioForm() {
         console.log('newBio:', newBio);
     }
 
+    function updateBio(id) {
+        let updatedBio = {
+            title: newTitle,
+            description: newDescription,
+            id
+        }
+
+        dispatch({
+            type: 'EDIT_BIO',
+            payload: updatedItem
+        })
+        setIdToEdit('')
+    }
+
 
     return (
         <>
@@ -84,14 +98,36 @@ function VendorBioForm() {
 
                 </form>
             ) : (bioEditing ? (
-                <div>
-                    <p>Name: {newBio.vendor_name}</p>
-                    <p>Stall #: {newBio.stall_num}</p>
-                    <p>Payment methods accepted: {newBio.pmt_methods}</p>
-                    <p>Bio: {newBio.bio_description}</p>
-                    <p>Location: {newBio.location}</p>
-                    <button onClick={() => setBioEditing(false)}>Edit</button>
-                </div>
+                <form onSubmit={submitHandler}>
+
+                    <div className="container">
+
+                        {/* Image upload might become a stretch. 
+                        Need to figure out how to get images to stay on the DOM using multer! */}
+                        {/* <p>Select a profile image to upload.</p>
+                            <input type="file"></input> */}
+
+                        <input id='1' placeholder="name" value={newBio.vendor_name} onChange={setBio}></input>
+                        <input id='2' placeholder="bio" value={newBio.bio_description} onChange={setBio}></input>
+                        <input id='3' placeholder="location" value={newBio.location} onChange={setBio}></input>
+                        <input id='4' placeholder="payment methods accepted" value={newBio.pmt_methods} onChange={setBio}></input>
+                        <input id='5' placeholder="stall number" value={newBio.stall_num} onChange={setBio}></input>
+                        <button type="submit">✔️</button>
+                        {/* onsubmit, the onSubmit handler will set editing to false.
+                        once editing = false, then the below div will render and we
+                        will not see the form anymore. */}
+
+                    </div>
+
+                </form>
+                // <div>
+                //     <p>Name: {newBio.vendor_name}</p>
+                //     <p>Stall #: {newBio.stall_num}</p>
+                //     <p>Payment methods accepted: {newBio.pmt_methods}</p>
+                //     <p>Bio: {newBio.bio_description}</p>
+                //     <p>Location: {newBio.location}</p>
+                //     <button onClick={() => setBioEditing(false)}>Edit</button>
+                // </div>
             ) : (
                 <div>
                     <input value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></input>
@@ -103,7 +139,7 @@ function VendorBioForm() {
                     After clicking save changes the update should be sent to the server => database to update the what's
                     in the database. 
                     Then the above DIV should display instead with the updated info from the DB!!! */}
-                    {/* <button onClick={() => updateItem(newBio.id)}>Save Changes</button> */}
+                    {/* <button onClick={() => updateBio(newBio.id)}>Save Changes</button> */}
                     {/* <button onClick={() => setBioEditing(false)}>Save Changes</button> */}
                 </div>
             )

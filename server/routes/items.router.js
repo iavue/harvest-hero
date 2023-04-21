@@ -57,7 +57,7 @@ router.put('/:id', (req, res) => {
   console.log('req.body',req.body)
   console.log('id',req.params.id)
 
-  const queryText = `UPDATE items SET "title" = $1, "description" = $2 WHERE id=$3`
+  const queryText = `UPDATE "items" SET "title" = $1, "description" = $2 WHERE id=$3`
   pool
   .query(queryText, [updatedItem.title, updatedItem.description, itemId])
   .then((result) => {
@@ -67,9 +67,6 @@ router.put('/:id', (req, res) => {
   .catch(error => {
     console.log(error)
   })
-
-
-
 });
 
 module.exports = router;

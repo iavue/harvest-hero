@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddNewItem from '../AddNewItem/AddNewItem';
 import Main from '../Main/Main';
 import Favorites from '../Favorites/Favorites';
+import VendorBioForm from '../VendorBioForm/VendorBioForm';
 
 import './App.css';
 
@@ -93,6 +94,14 @@ function App() {
             path="/favorites"
           >
             <Favorites />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows /vendorBioForm else shows LoginPage
+            exact
+            path="/vendorBioForm"
+          >
+            <VendorBioForm />
           </ProtectedRoute>
 
           <Route

@@ -34,4 +34,24 @@ router.post('/', (req, res) => {
     })
   });
 
+  router.put('/:id', (req, res) => {
+    // endpoint functionality
+    const updatedBio = req.body;//this is the action.payload from bio saga
+    const userId = req.params.id;//this is from the api/bio/${action.payload.id} from bio saga
+    console.log('req.body',req.body)
+    console.log('id',req.params.id)
+  
+    const queryText = `UPDATE "vendorprofile" SET "vendor_name" = $1, "bio_description" = $2 "location" = $3
+    "pmt_methods" = $4 "stall_num" = $5 WHERE id=$6`
+    pool
+    .query(queryText, [updatedBio.vendor_name, updatedBio.bio_description, updatedBio.location, updatedBio.pmt_methods, updatedBio.stall_num, userId])
+    .then((result) => {
+      res.sendStatus(200);
+    
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  });
+
 module.exports = router;
