@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import BioForm from '../BioForm/BioForm';
+// import BioForm from '../BioForm/BioForm';
 import BioDisplay from '../BioDisplay/BioDisplay';
 import VendorsItemsList from '../VendorsItemsList/VendorsItemsList';
 
@@ -14,8 +14,6 @@ function Profile() {
 
     return (
         <>
-        <BioForm />
-        {/* BioForm should disappear once onSubmit is clicked. */}
         <BioDisplay />
         <VendorsItemsList />
         </>

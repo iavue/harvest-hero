@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 // TO DO: add const for CRUD route/s
 const items = require('./routes/items.router');
 const bio = require('./routes/bio.router');
+const formStatus = require('./routes/formStatus.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 // TO DO: add route/s here for all the CRUD (GET, POST, PUT, DELETE)
 app.use('/api/items', items);
 app.use('/api/bio', bio);
+app.use('/api/formStatus', formStatus);
 
 // Serve static files
 app.use(express.static('build'));

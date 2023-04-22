@@ -37,7 +37,7 @@ function* bioSaga() {
     yield takeLatest('ADD_BIO', addBio);
     yield takeLatest('FETCH_BIO', fetchBio);
     yield takeLatest('EDIT_BIO', editBio);
-
+   
     // Don't think we will actually need to delete a bio
         // yield takeLatest('DELETE_BIO', deleteBio);
 }

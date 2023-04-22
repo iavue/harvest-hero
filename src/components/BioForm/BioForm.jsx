@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 function BioForm() {
@@ -13,27 +14,20 @@ function BioForm() {
         stall_num: ''
     });
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.user);
-    const [bioEditing, setBioEditing] = useState(true); // State to track if form is being edited or not
-
-    // check for the formSubmitted flag in localStorage when the component mounts. 
-        // If the flag is present, we set bioEditing to false so that the form is not displayed.
-    useEffect(() => {
-        const formSubmitted = localStorage.getItem('formSubmitted');
-        if (formSubmitted) {
-            setBioEditing(false);
-        }
-    }, []);
+    const history = useHistory();
+    // const user = useSelector((store) => store.user);
+    // const formStatus = useSelector((store) => store.formStatusReducer);
+    // console.log('what is in formStatus:', formStatus);
 
     // Called when the submit button is pressed
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log('Inside submitHandler() for VendorBioForm!!!');
-        console.log('What is inside my newBio for VendorBioForm:', newBio);
+        console.log('Inside submitHandler() for BioForm!!!');
+        console.log('What is inside my newBio for BioForm:', newBio);
         if (newBio.vendor_name && newBio.bio_description && newBio.location && newBio.pmt_methods && newBio.stall_num) {
             dispatch({ type: 'ADD_BIO', payload: newBio });
-            localStorage.setItem('formSubmitted', 'true');
-            setBioEditing(false);
+            history.push('/profile');
+            // dispatch({ type: 'UPDATE_FORM_STATUS', payload: true });
         }
     }
 
@@ -64,7 +58,7 @@ function BioForm() {
 
     return (
         <>
-        {bioEditing ? (
+        {/* {!user.profile_form_submitted && !formStatus.profile_form_submitted ? ( */}
         <form onSubmit={submitHandler}>
 
             <div className="container">
@@ -80,18 +74,18 @@ function BioForm() {
                 <input id='4' placeholder="payment methods accepted" value={newBio.pmt_methods} onChange={setBio}></input>
                 <input id='5' placeholder="stall number" value={newBio.stall_num} onChange={setBio}></input>
                 <button type="submit">✔️</button>
-                {/* onsubmit, the onSubmit handler will set editing to false.
-                        once editing = false, then the below div will render and we
-                        will not see the form anymore. */}
+                {/* onsubmit, the onSubmit handler will set profile_form_submitted to true.
+                        once profile_form_submitted = true, then the below empty div will render and we
+                        will never see the form anymore. */}
 
             </div>
 
         </form>
-        ) : (
+        {/* ) : (
             <div>
-              
+             
             </div>
-        )} 
+        )}  */}
         </>
     )
 }
