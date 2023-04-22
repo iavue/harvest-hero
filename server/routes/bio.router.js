@@ -41,8 +41,8 @@ router.post('/', (req, res) => {
     console.log('req.body',req.body)
     console.log('id',req.params.id)
   
-    const queryText = `UPDATE "vendorprofile" SET "vendor_name" = $1, "bio_description" = $2 "location" = $3
-    "pmt_methods" = $4 "stall_num" = $5 WHERE id=$6`
+    const queryText = `UPDATE "vendorprofile" SET "vendor_name"=$1, "bio_description"=$2, "location"=$3,
+    "pmt_methods"=$4, "stall_num"=$5 WHERE id=$6`
     pool
     .query(queryText, [updatedBio.vendor_name, updatedBio.bio_description, updatedBio.location, updatedBio.pmt_methods, updatedBio.stall_num, userId])
     .then((result) => {

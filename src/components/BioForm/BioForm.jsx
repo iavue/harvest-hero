@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function BioForm() {
@@ -13,6 +13,7 @@ function BioForm() {
         stall_num: ''
     });
     const dispatch = useDispatch();
+    const user = useSelector((store) => store.user);
     const [bioEditing, setBioEditing] = useState(true); // State to track if form is being edited or not
 
     // check for the formSubmitted flag in localStorage when the component mounts. 

@@ -6,7 +6,7 @@ function BioDisplay() {
 
     const user = useSelector((store) => store.user);
     console.log('what is in my user at biodisplay.jsx:', user);
-    const bio = useSelector((store) => store.bioReducer); // my bioReducer has my items!!! WTF WHY!!!! supposed to be farmer descriptions stuff
+    const bio = useSelector((store) => store.bioReducer); 
     console.log('what is in my bio at biodisplay.jsx:', bio);
     const dispatch = useDispatch();
 
