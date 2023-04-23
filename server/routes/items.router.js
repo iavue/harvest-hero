@@ -1,9 +1,21 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const multer = require('multer');
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
 
 /**
  * GET route template
@@ -21,20 +33,38 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
+// router.post('/', (req, res) => {
+//   // POST route code here
+//   const newItem = req.body;
+//   const userId = req.user.id;
+
+//   const query = `INSERT INTO "items" ("title", "description", "user_id")
+//   VALUES ($1, $2, $3)`;
+
+//   pool.query(query, [newItem.title, newItem.description, userId])
+//   .then(() => res.sendStatus(201))
+//   .catch(error => {
+//     console.log('Add Items Post Request Failed.', error);
+//     res.sendStatus(500);
+//   })
+// });
+
+//TESTING THIS BELOW
+router.post('/', upload.single('image'), (req, res) => {
   const newItem = req.body;
   const userId = req.user.id;
+  const imagePath = req.file.path;
 
-  const query = `INSERT INTO "items" ("title", "description", "user_id")
-  VALUES ($1, $2, $3)`;
+  const query = `INSERT INTO "items" ("title", "description", "user_id", "image_path")
+  VALUES ($1, $2, $3, $4)`;
 
-  pool.query(query, [newItem.title, newItem.description, userId])
+  pool.query(query, [newItem.title, newItem.description, userId, imagePath])
   .then(() => res.sendStatus(201))
   .catch(error => {
     console.log('Add Items Post Request Failed.', error);
     res.sendStatus(500);
   })
+
 });
 
 router.delete('/:id', (req, res) => {

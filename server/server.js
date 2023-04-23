@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const items = require('./routes/items.router');
 const bio = require('./routes/bio.router');
 const formStatus = require('./routes/formStatus.router')
+//const uploadRouter = require('./routes/upload.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,9 +32,11 @@ app.use('/api/user', userRouter);
 app.use('/api/items', items);
 app.use('/api/bio', bio);
 app.use('/api/formStatus', formStatus);
+//app.use('/upload', uploadRouter);
 
 // Serve static files
 app.use(express.static('build'));
+//app.use(express.static('uploads')); 
 
 // App Set //
 const PORT = process.env.PORT || 5000;

@@ -97,7 +97,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows /vendorBioForm else shows LoginPage
+            // logged in shows /vendorBio else shows LoginPage
             exact
             path="/vendorBioForm"
           >
