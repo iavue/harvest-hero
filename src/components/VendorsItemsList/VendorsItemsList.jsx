@@ -50,6 +50,7 @@ function VendorsItemsList() {
         return filteredItems.length ? (
             filteredItems.map((item) => (
                 <li key={item.id}>
+                    <img src={item.image_path}/>
                     {item.title}
                     {item.description}
                     {item.user_id === user.id ? (

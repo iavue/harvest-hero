@@ -36,7 +36,7 @@ app.use('/api/formStatus', formStatus);
 
 // Serve static files
 app.use(express.static('build'));
-//app.use(express.static('uploads')); 
+app.use('/uploads', express.static('uploads'));
 
 // App Set //
 const PORT = process.env.PORT || 5000;
