@@ -32,7 +32,7 @@ Button
   border-color: #000000;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #6d597a;
+  background-color: #403f40;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +55,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #584762;
+  background-color: #545254;
   text-decoration: none;
 }
 
@@ -72,8 +72,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #584762;
-  color: #584762;
+  border-color: #403f40;
+  color: #403f40;
 }
 
 /* --------------------------------------------------------------------------------

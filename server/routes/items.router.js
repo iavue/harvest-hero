@@ -51,14 +51,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 //TESTING THIS BELOW
 router.post('/', upload.single('image'), (req, res) => {
+  console.log('what is req.user.username:', req.user.username);
   const newItem = req.body;
   const userId = req.user.id;
   const imagePath = req.file.path;
+  const vendorUsername = req.user.username;
 
-  const query = `INSERT INTO "items" ("title", "description", "user_id", "image_path")
-  VALUES ($1, $2, $3, $4)`;
+  const query = `INSERT INTO "items" ("title", "description", "user_id", "image_path", "name")
+  VALUES ($1, $2, $3, $4, $5)`;
 
-  pool.query(query, [newItem.title, newItem.description, userId, imagePath])
+  pool.query(query, [newItem.title, newItem.description, userId, imagePath, vendorUsername])
   .then(() => res.sendStatus(201))
   .catch(error => {
     console.log('Add Items Post Request Failed.', error);
