@@ -26,6 +26,7 @@ function Main() {
         <>
             <form onSubmit={onSearch}>
                 <input
+                    placeholder="find something"
                     type="text"
                     value={searchInput}
                     onChange={evt => setSearchInput(evt.target.value)}
@@ -33,12 +34,13 @@ function Main() {
                 <input type="submit" value="Search" />
             </form>
 
-            <p>Search Results</p>
             <ul>
                 {items.map(item => (
                         <div key={item.id}>
                             <img src={item.image_path} style={{maxWidth: '150px'}}/>
+                            <br />
                             {item.title}
+                            <br />
                             {item.description}
                         </div>
                 ))}

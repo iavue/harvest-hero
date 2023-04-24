@@ -49,9 +49,11 @@ function VendorsItemsList() {
         
         return filteredItems.length ? (
             filteredItems.map((item) => (
-                <li key={item.id}>
+                <div key={item.id}>
                     <img src={item.image_path} style={{maxWidth: '150px'}}/>
+                    <br />
                     {item.title}
+                    <br />
                     {item.description}
                     {item.user_id === user.id ? (
 
@@ -81,7 +83,7 @@ function VendorsItemsList() {
                         <> 
                         </>
                     )}
-                </li>
+                </div>
             )) // end .map()
         ) : (
             <p>0 items in your catalog</p>

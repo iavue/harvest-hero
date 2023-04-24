@@ -58,20 +58,23 @@ function BioDisplay() {
         return filteredBio.length ? (
             filteredBio.map((singleBio) => (
                 <div key={singleBio.id}>
-                    <div>{singleBio.vendor_name}</div>
-                    <div><p>Stall #: </p>{singleBio.stall_num}</div>
-                    <div><p>Payment methods accepted: </p>{singleBio.pmt_methods}</div>
+                    <div><h2>{singleBio.vendor_name}</h2></div>
+                    <div>Stall #: {singleBio.stall_num}</div>
+                    <br />
+                    <div>Payment methods accepted: {singleBio.pmt_methods}</div>
+                    <br />
                     <div>{singleBio.bio_description}</div>
-                    <div>{singleBio.location}</div>
+                    <br />
+                    <div>Our location: {singleBio.location}</div>
                     {singleBio.user_id === user.id ? (
                         <div>
                             {idToEdit === singleBio.id ?
                                 <div>
-                                    <input value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></input>
-                                    <input value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></input>
-                                    <input value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></input>
-                                    <input value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></input>
-                                    <input value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></input>
+                                    <input placeholder="name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></input>
+                                    <input placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></input>
+                                    <input placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></input>
+                                    <input placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></input>
+                                    <input placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></input>
                                     <button onClick={() => updateBio(singleBio.id)}>Save Changes</button>
                                 </div>
                                 :
