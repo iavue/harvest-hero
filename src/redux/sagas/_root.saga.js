@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import items from './items.saga';
 import bio from './bio.saga';
 import formStatusSaga from './formStatus.saga';
+import searchSaga from './search.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     items(),
     bio(),
     formStatusSaga(),
+    searchSaga(),
   ]);
 }

@@ -12,8 +12,9 @@ const userRouter = require('./routes/user.router');
 // TO DO: add const for CRUD route/s
 const items = require('./routes/items.router');
 const bio = require('./routes/bio.router');
-const formStatus = require('./routes/formStatus.router')
+const formStatus = require('./routes/formStatus.router');
 //const uploadRouter = require('./routes/upload.router.js');
+const search = require('./routes/search.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use('/api/items', items);
 app.use('/api/bio', bio);
 app.use('/api/formStatus', formStatus);
 //app.use('/upload', uploadRouter);
+app.use('/api/search', search);
 
 // Serve static files
 app.use(express.static('build'));
