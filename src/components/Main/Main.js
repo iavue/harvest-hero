@@ -27,6 +27,10 @@ function Main() {
         });
     }
 
+    const addToList = () => {
+        console.log('Inside addToList');
+    }
+
     return (
         <>
             <form onSubmit={onSearch}>
@@ -43,6 +47,8 @@ function Main() {
                 {items.map(item => (
                         <div key={item.id}>
                             <img src={item.image_path} style={{maxWidth: '150px'}}/>
+                            <br />
+                            <button onClick={addToList}>Add to Shopping List</button>
                             <br />
                             {item.title}
                             <br />
