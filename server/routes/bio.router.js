@@ -19,8 +19,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.post('/', (req, res) => {
     // POST route code here
+  
     const newBio = req.body;
     const userId = req.user.id;
+
   
     const query = `INSERT INTO "vendorprofile" ("vendor_name", "bio_description", "location",
     "pmt_methods", "stall_num", "user_id")

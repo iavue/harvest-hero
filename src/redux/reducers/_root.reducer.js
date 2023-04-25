@@ -5,6 +5,8 @@ import itemsReducer from './items.reducer';
 import bioReducer from './bio.reducer';
 import formStatusReducer from './formStatus.reducer';
 import searchReducer from './search.reducer';
+import vendorInfoBio from './vendorInfoBio.reducer';
+import vendorInfoItems from './vendorInfoItems.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   bioReducer,
   formStatusReducer,
   searchReducer,
+  vendorInfoBio,
+  vendorInfoItems,
 });
 
 export default rootReducer;

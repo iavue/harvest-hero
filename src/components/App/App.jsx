@@ -23,6 +23,7 @@ import AddNewItem from '../AddNewItem/AddNewItem';
 import Main from '../Main/Main';
 import Favorites from '../Favorites/Favorites';
 import VendorBioForm from '../VendorBioForm/VendorBioForm';
+import VendorStore from '../VendorStore/VendorStore';
 
 import './App.css';
 
@@ -102,6 +103,14 @@ function App() {
             path="/vendorBioForm"
           >
             <VendorBioForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows /vendorStore else shows LoginPage
+            exact
+            path="/vendorStore/:storeId"
+          >
+            <VendorStore />
           </ProtectedRoute>
 
           <Route

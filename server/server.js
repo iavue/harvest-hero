@@ -15,6 +15,8 @@ const bio = require('./routes/bio.router');
 const formStatus = require('./routes/formStatus.router');
 //const uploadRouter = require('./routes/upload.router.js');
 const search = require('./routes/search.router');
+const vendorBio = require('./routes/vendorBio.router');
+const vendorItems = require('./routes/vendorItems.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,6 +37,8 @@ app.use('/api/bio', bio);
 app.use('/api/formStatus', formStatus);
 //app.use('/upload', uploadRouter);
 app.use('/api/search', search);
+app.use('/api/vendorBio', vendorBio);
+app.use('/api/vendorItems', vendorItems);
 
 // Serve static files
 app.use(express.static('build'));

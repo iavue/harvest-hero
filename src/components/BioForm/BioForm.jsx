@@ -24,6 +24,7 @@ function BioForm() {
         event.preventDefault();
         console.log('Inside submitHandler() for BioForm!!!');
         console.log('What is inside my newBio for BioForm:', newBio);
+       
         if (newBio.vendor_name && newBio.bio_description && newBio.location && newBio.pmt_methods && newBio.stall_num) {
             dispatch({ type: 'ADD_BIO', payload: newBio });
             history.push('/profile');
