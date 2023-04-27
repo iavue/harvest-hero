@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
+import '@fontsource/roboto/400.css';
+import TextField from '@mui/material/TextField';
+import './BioDisplay.css'
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 
 function BioDisplay() {
     console.log('Inside BioDisplay()!!');
@@ -57,28 +63,28 @@ function BioDisplay() {
 
         return filteredBio.length ? (
             filteredBio.map((singleBio) => (
-                <div key={singleBio.id}>
-                    <div><h2>{singleBio.vendor_name}</h2></div>
-                    <div>Stall #: {singleBio.stall_num}</div>
+                <div className="motherContainer" key={singleBio.id}>
+                    <div><Typography variant="h4">{singleBio.vendor_name}</Typography></div>
+                    <div><Typography>Stall #: {singleBio.stall_num}</Typography></div>
+                    <div><Typography>Payment methods accepted: </Typography></div>
+                    <div><Typography>{singleBio.pmt_methods}</Typography></div>
                     <br />
-                    <div>Payment methods accepted: {singleBio.pmt_methods}</div>
+                    <div><Typography>{singleBio.bio_description}</Typography></div>
                     <br />
-                    <div>{singleBio.bio_description}</div>
-                    <br />
-                    <div>Our location: {singleBio.location}</div>
+                    <div><Typography>Our location: {singleBio.location}</Typography></div>
                     {singleBio.user_id === user.id ? (
                         <div>
                             {idToEdit === singleBio.id ?
                                 <div>
-                                    <input placeholder="name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></input>
-                                    <input placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></input>
-                                    <input placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></input>
-                                    <input placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></input>
-                                    <input placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></input>
-                                    <button onClick={() => updateBio(singleBio.id)}>Save Changes</button>
+                                    <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Name" placeholder="name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
+                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Stall #" placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></TextField>
+                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Payment methods accepted" placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
+                                    <TextField style={{ marginBottom: "10px" }} label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
+                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Location" placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></TextField>
+                                    <Button variant="outlined" onClick={() => updateBio(singleBio.id)}>Save Changes</Button>
                                 </div>
                                 :
-                                <button onClick={() => addInputField(singleBio)}>Edit Bio</button>
+                                <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => addInputField(singleBio)}>Edit Bio</Button>
                             }
                         </div>
                     ) : (<></>)}
