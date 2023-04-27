@@ -3,12 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-//import PhotoCamera from '@mui/icons-material/PhotoCamera';
-
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 function AddNewItem() {
 
@@ -80,9 +78,9 @@ function AddNewItem() {
         formData.append('image', image);
 
         if (newItem.title && newItem.description) {
-                dispatch({ type: 'ADD_ITEM', payload: formData });
-                history.push('/profile');
-            }
+            dispatch({ type: 'ADD_ITEM', payload: formData });
+            history.push('/profile');
+        }
     };
 
     const setItem = (event) => {
@@ -100,25 +98,53 @@ function AddNewItem() {
         }
     };
 
+    // return (
+    //     <>
+    //         <form onSubmit={submitHandler}>
+    //             <input type="file" name="image" onChange={handleImageChange} />
+    //             <input
+    //                 id="1"
+    //                 placeholder="title"
+    //                 value={newItem.title}
+    //                 onChange={setItem}
+    //             />
+    //             <input
+    //                 id="2"
+    //                 placeholder="description"
+    //                 value={newItem.description}
+    //                 onChange={setItem}
+    //             />
+    //             <button type="submit">Add Item</button>
+    //         </form>
+    //     </>)
+
     return (
-        <>
-            <form onSubmit={submitHandler}>
+        <Box component="form" onSubmit={submitHandler} sx={{ '& > :not(style)': { m: 10, width: '25ch' } }}>
+            <Stack direction="column" spacing={2}>
+
                 <input type="file" name="image" onChange={handleImageChange} />
-                <input
+
+                <TextField
                     id="1"
-                    placeholder="title"
+                    label="Title"
+                    variant="outlined"
                     value={newItem.title}
                     onChange={setItem}
                 />
-                <input
+
+                <TextField
                     id="2"
-                    placeholder="description"
+                    label="Description"
+                    variant="outlined"
                     value={newItem.description}
                     onChange={setItem}
                 />
-                <button type="submit">Add Item</button>
-            </form>
-        </>)
+
+                <Button type="submit" variant="outlined">Add Item</Button>
+
+            </Stack>
+        </Box>
+    )
 
 }
 
