@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
+import '@fontsource/roboto/400.css';
+
 
 
 function BioForm() {
@@ -60,28 +66,29 @@ function BioForm() {
     return (
         <>
         {/* {!user.profile_form_submitted && !formStatus.profile_form_submitted ? ( */}
-        <form onSubmit={submitHandler}>
-
+        <Box component="form" onSubmit={submitHandler} sx={{ '& > :not(style)': { m: 6} }}>
+     
             <div className="container">
 
                 {/* Image upload might become a stretch. 
                         Need to figure out how to get images to stay on the DOM using multer! */}
                 {/* <p>Select a profile image to upload.</p>
                             <input type="file"></input> */}
-
-                <input id='1' placeholder="name" value={newBio.vendor_name} onChange={setBio}></input>
-                <input id='2' placeholder="bio" value={newBio.bio_description} onChange={setBio}></input>
-                <input id='3' placeholder="location" value={newBio.location} onChange={setBio}></input>
-                <input id='4' placeholder="payment methods accepted" value={newBio.pmt_methods} onChange={setBio}></input>
-                <input id='5' placeholder="stall number" value={newBio.stall_num} onChange={setBio}></input>
-                <button type="submit">✔️</button>
+                <Typography variant="h4" style={{ marginBottom: "20px" }}>Add your bio</Typography>
+                <TextField id='1' style={{ marginBottom: "10px" }} label="Name" placeholder="name" size="small" value={newBio.vendor_name} onChange={setBio}></TextField>
+                <TextField id='5' style={{ marginBottom: "10px" }} label="Stall #" placeholder="stall number" size="small" value={newBio.stall_num} onChange={setBio}></TextField>
+                <TextField id='4' style={{ marginBottom: "10px" }} label="Payment Methods Accepted" placeholder="payment methods accepted" multiline value={newBio.pmt_methods} onChange={setBio}></TextField>
+                <TextField id='2' style={{ marginBottom: "10px" }} label="Bio Description" placeholder="bio" multiline value={newBio.bio_description} onChange={setBio}></TextField>
+                <TextField id='3' style={{ marginBottom: "10px" }} label="Location" placeholder="location" size="small" value={newBio.location} onChange={setBio}></TextField>
+                <br />
+                <Button variant="outlined" type="submit">Submit</Button>
                 {/* onsubmit, the onSubmit handler will set profile_form_submitted to true.
                         once profile_form_submitted = true, then the below empty div will render and we
                         will never see the form anymore. */}
 
             </div>
-
-        </form>
+    
+        </Box>
         {/* ) : (
             <div>
              

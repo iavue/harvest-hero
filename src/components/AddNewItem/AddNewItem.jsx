@@ -136,6 +136,7 @@ function AddNewItem() {
                     id="2"
                     label="Description"
                     variant="outlined"
+                    multiline
                     value={newItem.description}
                     onChange={setItem}
                 />
