@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import BioForm from '../BioForm/BioForm';
 import BioDisplay from '../BioDisplay/BioDisplay';
 import VendorsItemsList from '../VendorsItemsList/VendorsItemsList';
+import './Profile.css';
 
 
 // This is one of our simplest components
@@ -13,10 +14,10 @@ import VendorsItemsList from '../VendorsItemsList/VendorsItemsList';
 function Profile() {
 
     return (
-        <>
-        <BioDisplay />
-        <VendorsItemsList />
-        </>
+        <div id="parentContainer">
+            <div className="child-1"><BioDisplay /></div>
+            <div className="child-2"><VendorsItemsList /></div>
+        </div>
     )
 }
 

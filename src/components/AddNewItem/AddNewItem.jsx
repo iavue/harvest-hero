@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+//import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -101,6 +103,7 @@ function AddNewItem() {
     return (
         <>
             <form onSubmit={submitHandler}>
+                <input type="file" name="image" onChange={handleImageChange} />
                 <input
                     id="1"
                     placeholder="title"
@@ -113,7 +116,6 @@ function AddNewItem() {
                     value={newItem.description}
                     onChange={setItem}
                 />
-                <input type="file" name="image" onChange={handleImageChange} />
                 <button type="submit">Add Item</button>
             </form>
         </>)

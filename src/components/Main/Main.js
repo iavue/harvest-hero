@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import VendorStore from '../VendorStore/VendorStore';
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 function Main() {
     console.log('Inside Main()!!!!');
@@ -12,11 +15,11 @@ function Main() {
     console.log('what is inside items from main.js:', items);
 
     // TO DO: Decide if we want to turn on useEffect to clear the search list after every page refresh!
-    useEffect(() => {
-        dispatch({
-            type: 'CLEAR_ITEM_LIST'
-        }); 
-    }, []);
+    // useEffect(() => {
+    //     dispatch({
+    //         type: 'CLEAR_ITEM_LIST'
+    //     }); 
+    // }, []);
 
     const onSearch = (evt) => {
         evt.preventDefault();
@@ -45,19 +48,23 @@ function Main() {
 
             <ul>
                 {items.map(item => (
-                        <div key={item.id}>
-                            <img src={item.image_path} style={{maxWidth: '150px'}}/>
-                            <br />
-                            <button onClick={addToList}>Add to Shopping List</button>
-                            <br />
+                    <Box key={item.id}>
+                        <img src={item.image_path} style={{ maxWidth: '150px' }} />
+                        <br />
+                        <button onClick={addToList}>Add to Shopping List</button>
+                        <br />
+                        <Typography variant="h5">
                             {item.title}
-                            <br />
+                        </Typography>
+                        <br />
+                        <Typography>
                             {item.description}
-                            <br />
-                            <Link to={`/vendorStore/${item.user_id}`}>{item.name}</Link>
-                            {/* <Link to={`/vendorStore`}>{item.name}</Link>
+                        </Typography>
+                        <br />
+                        <Link to={`/vendorStore/${item.user_id}`}>{item.name}</Link>
+                        {/* <Link to={`/vendorStore`}>{item.name}</Link>
                             <VendorStore props={item.user_id} /> */}
-                        </div>
+                    </Box>
                 ))}
             </ul>
         </>

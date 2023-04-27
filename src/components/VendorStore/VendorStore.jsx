@@ -19,6 +19,10 @@ function VendorStore() {
         dispatch({ type: "FETCH_VENDORINFO_ITEMS", payload: storeId });
     }, []);
 
+    const addToList = () => {
+        console.log('Inside addToList');
+    }
+
     return (<>
         {bio.length ? (
             bio.map((singleBio) => (
@@ -36,11 +40,13 @@ function VendorStore() {
         ) : (
             <p>More information about vendor coming soon!</p>
         )}
-
+        <h3>Items Available Today</h3>
         {items.length ? (
             items.map((item) => (
                 <div key={item.id}>
                     <img src={item.image_path} style={{ maxWidth: '150px' }} />
+                    <br />
+                    <button onClick={addToList}>Add to Shopping List</button>
                     <br />
                     {item.title}
                     <br />
