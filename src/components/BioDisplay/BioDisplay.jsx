@@ -4,15 +4,15 @@ import Button from '@mui/material/Button';
 import '@fontsource/roboto/400.css';
 import TextField from '@mui/material/TextField';
 import './BioDisplay.css'
-import { Typography } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Typography, Box, Chip } from "@mui/material";
+
 
 function BioDisplay() {
     console.log('Inside BioDisplay()!!');
 
     const user = useSelector((store) => store.user);
     console.log('what is in my user at biodisplay.jsx:', user);
-    const bio = useSelector((store) => store.bioReducer); 
+    const bio = useSelector((store) => store.bioReducer);
     console.log('what is in my bio at biodisplay.jsx:', bio);
     const dispatch = useDispatch();
 
@@ -64,19 +64,36 @@ function BioDisplay() {
         return filteredBio.length ? (
             filteredBio.map((singleBio) => (
                 <div className="motherContainer" key={singleBio.id}>
-                    <div><Typography variant="h4">{singleBio.vendor_name}</Typography></div>
-                    <div><Typography>Stall #: {singleBio.stall_num}</Typography></div>
-                    <div><Typography>Payment methods accepted: </Typography></div>
-                    <div><Typography>{singleBio.pmt_methods}</Typography></div>
+                    <Box backgroundColor="#ffffff" sx={{ mx: "auto", maxWidth: 600, p: 3, boxShadow: 3, borderRadius: 5 }}>
+                        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                            <Typography variant="h4">{singleBio.vendor_name}</Typography>
+                            <Box sx={{ ml: 2 }}>
+                                <Chip label={`Stall #${singleBio.stall_num}`} variant="outlined" />
+                            </Box>
+                        </Box>
+                        <Typography variant="subtitle1" gutterBottom>
+                            Payment methods accepted: {singleBio.pmt_methods}
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                            {singleBio.bio_description}
+                        </Typography>
+                        <Typography variant="subtitle2" gutterBottom>
+                            Our location: {singleBio.location}
+                        </Typography>
+                   
+                    {/* <div><Typography variant="h4" sx={{ mb: 1 }}>{singleBio.vendor_name}</Typography></div>
+                    <div><Typography sx={{ mb: 1 }}>Stall #: {singleBio.stall_num}</Typography></div>
+                    <div><Typography sx={{ mb: 1 }}>Payment methods accepted: </Typography></div>
+                    <div><Typography sx={{ mb: 1 }}>{singleBio.pmt_methods}</Typography></div>
                     <br />
-                    <div><Typography>{singleBio.bio_description}</Typography></div>
+                    <div><Typography sx={{ mb: 2 }}>{singleBio.bio_description}</Typography></div>
                     <br />
-                    <div><Typography>Our location: {singleBio.location}</Typography></div>
+                    <div><Typography>Our location: {singleBio.location}</Typography></div> */}
                     {singleBio.user_id === user.id ? (
                         <div>
                             {idToEdit === singleBio.id ?
                                 <div>
-                                    <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Name" placeholder="name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
+                                    <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Display name" placeholder="display name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
                                     <TextField style={{ marginBottom: "10px" }} size="small" label="Stall #" placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></TextField>
                                     <TextField style={{ marginBottom: "10px" }} size="small" label="Payment methods accepted" placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
                                     <TextField style={{ marginBottom: "10px" }} label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
@@ -88,6 +105,7 @@ function BioDisplay() {
                             }
                         </div>
                     ) : (<></>)}
+                     </Box>
                 </div>
             )) // end .map()
         ) : (
@@ -96,8 +114,8 @@ function BioDisplay() {
     };
     return (
         <>
-        {render()}
+            {render()}
         </>);
 
-    } // end BioDisplay
+} // end BioDisplay
 export default BioDisplay;

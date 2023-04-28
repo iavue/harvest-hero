@@ -75,7 +75,7 @@ function BioForm() {
                 {/* <p>Select a profile image to upload.</p>
                             <input type="file"></input> */}
                 <Typography variant="h4" style={{ marginBottom: "20px" }}>Add your bio</Typography>
-                <TextField id='1' style={{ marginBottom: "10px" }} label="Name" placeholder="name" size="small" value={newBio.vendor_name} onChange={setBio}></TextField>
+                <TextField id='1' style={{ marginBottom: "10px" }} label="Display Name" placeholder="name" size="small" value={newBio.vendor_name} onChange={setBio}></TextField>
                 <TextField id='5' style={{ marginBottom: "10px" }} label="Stall #" placeholder="stall number" size="small" value={newBio.stall_num} onChange={setBio}></TextField>
                 <TextField id='4' style={{ marginBottom: "10px" }} label="Payment Methods Accepted" placeholder="payment methods accepted" multiline value={newBio.pmt_methods} onChange={setBio}></TextField>
                 <TextField id='2' style={{ marginBottom: "10px" }} label="Bio Description" placeholder="bio" multiline value={newBio.bio_description} onChange={setBio}></TextField>
