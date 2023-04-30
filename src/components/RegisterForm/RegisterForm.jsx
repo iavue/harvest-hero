@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -22,17 +27,19 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+    <Box component="form" className="formPanel" onSubmit={registerUser} sx={{ '& > :not(style)': { m: 10, width: '25ch' } }}>
+      <Typography variant="h2">Register User</Typography>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
+      <Stack direction="column" spacing={2}>
       <div>
         <label htmlFor="username">
           Username:
-          <input
+          <TextField
+            sx={{backgroundColor: 'white', }}
             type="text"
             name="username"
             value={username}
@@ -44,7 +51,8 @@ function RegisterForm() {
       <div>
         <label htmlFor="password">
           Password:
-          <input
+          <TextField
+            sx={{backgroundColor: 'white', }}
             type="password"
             name="password"
             value={password}
@@ -57,6 +65,7 @@ function RegisterForm() {
         <label htmlFor="accountType">
           Account Type:
           <select
+            style={{ width: '200px' }}
             name="accountType"
             value={accountType}
             required
@@ -68,9 +77,11 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <Button sx={{backgroundColor: 'white', }} variant="outlined" className="btn" type="submit" name="submit" value="Register">Register</Button>
+        {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
       </div>
-    </form>
+      </Stack>
+    </Box>
   );
 }
 

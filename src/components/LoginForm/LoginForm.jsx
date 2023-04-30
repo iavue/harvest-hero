@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -27,17 +32,19 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <Box component="form" className="formPanel" onSubmit={login} sx={{ '& > :not(style)': { m: 10, width: '25ch' } }}>
+      <Typography variant="h2">Login</Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
+      <Stack direction="column" spacing={2}>
       <div>
         <label htmlFor="username">
           Username:
-          <input
+          <TextField
+            sx={{backgroundColor: 'white', }}
             type="text"
             name="username"
             required
@@ -49,7 +56,8 @@ function LoginForm() {
       <div>
         <label htmlFor="password">
           Password:
-          <input
+          <TextField
+            sx={{backgroundColor: 'white', }}
             type="password"
             name="password"
             required
@@ -59,9 +67,10 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button sx={{backgroundColor: 'white', }} className="btn" type="submit" name="submit" value="Log In" variant="outlined">Log In</Button>
       </div>
-    </form>
+      </Stack>
+    </Box>
   );
 }
 
