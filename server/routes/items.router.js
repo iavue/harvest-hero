@@ -22,7 +22,7 @@ const upload = multer({ storage: storage });
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
   pool
-    .query(`SELECT * FROM "items" ORDER BY id`) // TO DO: create query
+    .query(`SELECT * FROM "items" ORDER BY id DESC`) // TO DO: create query
     .then((results) => res.send(results.rows))
     .catch((error) => {
       console.log('Error making SELECT:', error);

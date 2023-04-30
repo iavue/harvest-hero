@@ -10,7 +10,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.params.id;
     
     pool
-      .query('SELECT * FROM "items" WHERE user_id = $1', [userId]) // TO DO: create query
+      .query('SELECT * FROM "items" WHERE user_id = $1 ORDER BY id DESC', [userId]) // TO DO: create query
       .then((results) => res.send(results.rows))
       .catch((error) => {
         console.log('Error making SELECT:', error);
