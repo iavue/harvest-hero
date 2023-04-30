@@ -64,24 +64,28 @@ function BioDisplay() {
         return filteredBio.length ? (
             filteredBio.map((singleBio) => (
                 <div className="motherContainer" key={singleBio.id}>
-                    <Box backgroundColor="#ffffff" sx={{ mx: "auto", maxWidth: 600, p: 3, boxShadow: 3, borderRadius: 5 }}>
+                    <Box backgroundColor="#ffffff" sx={{ p: 3, boxShadow: 3, borderRadius: 1, width: "263px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                             <Typography variant="h4">{singleBio.vendor_name}</Typography>
                             <Box sx={{ ml: 2 }}>
                                 <Chip label={`Stall #${singleBio.stall_num}`} variant="outlined" />
                             </Box>
                         </Box>
-                        <Typography variant="subtitle1" gutterBottom>
+                        {/* <Typography variant="subtitle1" gutterBottom>
                             Payment methods accepted: {singleBio.pmt_methods}
+                        </Typography> */}
+                        <Typography variant="body1" gutterBottom>
+                            Payment options:
                         </Typography>
+                        <Typography sx={{ mb: '10px'}}>{singleBio.pmt_methods}</Typography>
                         <Typography variant="body1" gutterBottom>
                             {singleBio.bio_description}
                         </Typography>
                         <Typography variant="subtitle2" gutterBottom>
                             Our location: {singleBio.location}
                         </Typography>
-                   
-                    {/* <div><Typography variant="h4" sx={{ mb: 1 }}>{singleBio.vendor_name}</Typography></div>
+
+                        {/* <div><Typography variant="h4" sx={{ mb: 1 }}>{singleBio.vendor_name}</Typography></div>
                     <div><Typography sx={{ mb: 1 }}>Stall #: {singleBio.stall_num}</Typography></div>
                     <div><Typography sx={{ mb: 1 }}>Payment methods accepted: </Typography></div>
                     <div><Typography sx={{ mb: 1 }}>{singleBio.pmt_methods}</Typography></div>
@@ -89,23 +93,23 @@ function BioDisplay() {
                     <div><Typography sx={{ mb: 2 }}>{singleBio.bio_description}</Typography></div>
                     <br />
                     <div><Typography>Our location: {singleBio.location}</Typography></div> */}
-                    {singleBio.user_id === user.id ? (
-                        <div>
-                            {idToEdit === singleBio.id ?
-                                <div>
-                                    <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Display name" placeholder="display name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
-                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Stall #" placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></TextField>
-                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Payment methods accepted" placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
-                                    <TextField style={{ marginBottom: "10px" }} label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
-                                    <TextField style={{ marginBottom: "10px" }} size="small" label="Location" placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></TextField>
-                                    <Button variant="outlined" onClick={() => updateBio(singleBio.id)}>Save Changes</Button>
-                                </div>
-                                :
-                                <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => addInputField(singleBio)}>Edit Bio</Button>
-                            }
-                        </div>
-                    ) : (<></>)}
-                     </Box>
+                        {singleBio.user_id === user.id ? (
+                            <div>
+                                {idToEdit === singleBio.id ?
+                                    <div>
+                                        <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Display name" placeholder="display name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} size="small" label="Stall #" placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} size="small" label="Payment methods accepted" placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} size="small" label="Location" placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></TextField>
+                                        <Button variant="outlined" onClick={() => updateBio(singleBio.id)}>Save Changes</Button>
+                                    </div>
+                                    :
+                                    <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => addInputField(singleBio)}>Edit Bio</Button>
+                                }
+                            </div>
+                        ) : (<></>)}
+                    </Box>
                 </div>
             )) // end .map()
         ) : (
