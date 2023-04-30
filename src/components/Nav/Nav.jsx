@@ -141,8 +141,8 @@ function Nav() {
         {/* If a user is logged in and their access level is vendor, show these links */}
         {user.access_level === "vendor" && user.id && (
           <>
-            <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, borderTop: '1px solid black' }} >
-              <BottomNavigation showLabels>
+            <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, borderTop: '1px solid black', backgroundColor: 'blue' }} >
+              <BottomNavigation showLabels sx={{ backgroundColor: 'white' }}>
                 <BottomNavigationAction
                   component={Link}
                   to="/profile"
