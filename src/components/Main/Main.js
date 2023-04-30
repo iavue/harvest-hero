@@ -138,7 +138,7 @@ function Main() {
 
         <div>
             {items.map(item => (
-                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto', mb: '10px' }}>
+                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto', my: '10px', mx: '5px' }}>
                     <CardMedia component="img" image={item.image_path} alt={item.title} sx={{ width: '40%' }} />
                     <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '60%' }}>
                         <Typography variant="h5" component="h2" gutterBottom>
@@ -147,13 +147,13 @@ function Main() {
                         <Typography variant="body2" color="text.secondary">
                             {item.description}
                         </Typography>
-                        <Link to={`/vendorStore/${item.user_id}`} variant="subtitle1">
+                        <Link to={`/vendorStore/${item.user_id}`} style={{ fontSize: '.9rem',}}>
                             {item.name}
                         </Link>
                         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
-                            <Button size="small" variant="contained" color="primary" onClick={addToList}>
+                            <button className="add-to-cart" onClick={addToList}>
                                 Add to Cart
-                            </Button>
+                            </button>
                         </CardActions>
                     </CardContent>
                 </Card>

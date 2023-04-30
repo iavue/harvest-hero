@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '@mui/material/Button';
+import button from '@mui/material/Button';
 import '@fontsource/roboto/400.css';
 import TextField from '@mui/material/TextField';
 import './BioDisplay.css'
@@ -99,13 +99,13 @@ function BioDisplay() {
                                     <div>
                                         <TextField style={{ marginBottom: "10px", marginTop: "10px" }} size="small" label="Display name" placeholder="display name" value={newVendorName} onChange={(event) => setNewVendorName(event.target.value)}></TextField>
                                         <TextField style={{ marginBottom: "10px" }} size="small" label="Stall #" placeholder="stall #" value={newStallNum} onChange={(event) => setNewStallNum(event.target.value)}></TextField>
-                                        <TextField style={{ marginBottom: "10px" }} size="small" label="Payment methods accepted" placeholder="payment methods" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
-                                        <TextField style={{ marginBottom: "10px" }} label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} multiline size="small" label="Payment options" placeholder="payment options" value={newPmtMethods} onChange={(event) => setNewPmtMethods(event.target.value)}></TextField>
+                                        <TextField style={{ marginBottom: "10px" }} multiline label="Bio description" placeholder="bio description" value={newBioDescription} onChange={(event) => setNewBioDescription(event.target.value)}></TextField>
                                         <TextField style={{ marginBottom: "10px" }} size="small" label="Location" placeholder="location" value={newLocation} onChange={(event) => setNewLocation(event.target.value)}></TextField>
-                                        <Button variant="outlined" onClick={() => updateBio(singleBio.id)}>Save Changes</Button>
+                                        <button className="save-changes" onClick={() => updateBio(singleBio.id)}>Save</button>
                                     </div>
                                     :
-                                    <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => addInputField(singleBio)}>Edit Bio</Button>
+                                    <button className="edit-bio" variant="outlined" onClick={() => addInputField(singleBio)}>Edit</button>
                                 }
                             </div>
                         ) : (<></>)}

@@ -4,13 +4,14 @@ import VendorBioForm from '../VendorBioForm/VendorBioForm';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+import button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import '@fontsource/roboto/400.css';
 import { positions } from '@mui/system';
 import './VendorsItemsList.css';
 import TextField from '@mui/material/TextField';
+import Swal from 'sweetalert2';
 
 function VendorsItemsList() {
 
@@ -111,31 +112,52 @@ function VendorsItemsList() {
                         <Typography sx={{ mt: 2 }}>{item.description}</Typography>
                         {item.user_id === user.id ? (
                             <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                <Button className='deleteBtn' startIcon={<IconButton aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>} onClick={() => dispatch({ type: 'DELETE_ITEM', payload: item.id })}></Button>
+                                
+                                <button className='delete-button' onClick={() =>
+
+                                    Swal.fire({
+                                        title: 'Are you sure?',
+                                        text: 'This action cannot be undone',
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#2BAE66FF',
+                                        cancelButtonColor: 'darkgrey',
+                                        confirmButtonText: 'Yes, delete it!'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            dispatch({type: 'DELETE_ITEM', payload: item.id })
+                                            Swal.fire(
+                                                'Deleted!',
+                                                'Your item has been deleted.',
+                                                'success'
+                                            )
+                                        }
+                                    })
+
+                                    }>Delete</button> 
+
                                 {idToEdit === item.id ?
-                                    <div sx={{ display: "flex", alignItems: "center" }}>
-                                        <TextField style={{ marginBottom: "20px" }} id="outlined-textarea1" className="textField" label="Title" placeholder="Title" multiline value={newTitle} onChange={(event) => setNewTitle(event.target.value)} sx={{ mr: 2 }} />
-                                        <br />
-                                        <TextField style={{ marginBottom: "20px" }} id="outlined-textarea2" className="textField" label="Description" placeholder="Description" multiline value={newDescription} onChange={(event) => setNewDescription(event.target.value)} sx={{ mr: 2 }} />
-                                        <Button variant="outlined" onClick={() => updateItem(item.id)}>Save Changes</Button>
-                                    </div>
-                                    :
-                                    <Button variant="outlined" onClick={() => addInputField(item)}>Edit</Button>
-                                }
-                            </Box>
-                        ) : null}
+                            <div sx={{ display: "flex", alignItems: "center" }}>
+                                <TextField style={{ marginBottom: "20px" }} id="outlined-textarea1" className="textField" label="Title" placeholder="Title" multiline value={newTitle} onChange={(event) => setNewTitle(event.target.value)} sx={{ mr: 2 }} />
+                                <br />
+                                <TextField style={{ marginBottom: "20px" }} id="outlined-textarea2" className="textField" label="Description" placeholder="Description" multiline value={newDescription} onChange={(event) => setNewDescription(event.target.value)} sx={{ mr: 2 }} />
+                                <button className="save-changes" onClick={() => updateItem(item.id)}>Save Changes</button>
+                            </div>
+                            :
+                            <button className="edit" onClick={() => addInputField(item)}>Edit</button>
+                        }
                     </Box>
-                </Paper>
+                        ) : null}
+                </Box>
+                </Paper >
             )) // end .map()
         ) : (
-            <Typography variant="body1" sx={{ mt: 2 }}>0 items in your catalog</Typography>
-            // Return "0 items in your catalog" if filteredItems.length is not true (does not have anything inside the 'filteredItemsDou' array)
-        );
-    };
+        <Typography variant="body1" sx={{ mt: 2 }}>0 items in your catalog</Typography>
+        // Return "0 items in your catalog" if filteredItems.length is not true (does not have anything inside the 'filteredItemsDou' array)
+    );
+};
 
-    return <>{render()}</>;
+return <>{render()}</>;
 }
 
 export default VendorsItemsList;

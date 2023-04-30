@@ -16,3 +16,48 @@ textarea {
     margin-bottom: 10px;
     padding: 10px;
 } */
+
+.delete-button {
+    background-color: white;
+    /* Red background */
+    border-radius: 10px;
+    border: none;
+    /* Remove border */
+    color: black;
+    /* White text */
+    padding: 12px 24px;
+    /* Add padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Display as a block element */
+    font-size: 16px;
+    /* Increase font size */
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    /* Add cursor on hover */
+}
+
+.edit, .save-changes {
+    background-color: white;
+    /* Red background */
+    border-radius:10px;
+    border: 0;
+    color: #2BAE66FF;
+    /* White text */
+    padding: 12px 24px;
+    /* Add padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Display as a block element */
+    font-size: 16px;
+    /* Increase font size */
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    /* Add cursor on hover */
+}

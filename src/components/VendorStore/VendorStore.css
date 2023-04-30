@@ -2,3 +2,25 @@
     margin-right: 40px;
     margin-bottom: 20px;
 }
+
+.add-to-cart {
+    background-color: white;
+    /* Red background */
+    border-radius:10px;
+    border: 0;
+    color: #2BAE66FF;
+    /* White text */
+    /* padding: 12px 24px; */
+    /* Add padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Display as a block element */
+    font-size: 16px;
+    /* Increase font size */
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    /* Add cursor on hover */
+}

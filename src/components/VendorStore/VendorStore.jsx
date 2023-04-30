@@ -73,7 +73,7 @@ function VendorStore() {
         {bio.length ? (
             bio.map((singleBio) => (
                 <div className="motherContainer" key={singleBio.id}>
-                    <Box backgroundColor="#ffffff" sx={{ mx: "auto", maxWidth: 600, p: 3, boxShadow: 3, borderRadius: 5 }}>
+                    <Box backgroundColor="#ffffff" sx={{width: "320px", p: 3, boxShadow: 3, borderRadius: 1 }}>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                             <Typography variant="h4">{singleBio.vendor_name}</Typography>
                             <Box sx={{ ml: 2 }}>
@@ -95,7 +95,7 @@ function VendorStore() {
         ) : (
             <Typography>More information about vendor coming soon!</Typography>
         )}
-        <Typography variant="h3" sx={{ textAlign: 'center', mb: "10px" }}>Items Available Today</Typography>
+        <Typography variant="h4" sx={{ textAlign: 'center', mb: "10px" }}>Items Available Today</Typography>
         {items.length ? (
             items.map((item) => (
                 <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto', mb: '10px' }}>
@@ -108,9 +108,9 @@ function VendorStore() {
                         {item.description}
                     </Typography>
                     <CardActions sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
-                        <Button size="small" variant="contained" color="primary" onClick={addToList}>
+                        <button className="add-to-cart" onClick={addToList}>
                             Add to Cart
-                        </Button>
+                        </button>
                     </CardActions>
                 </CardContent>
             </Card>
