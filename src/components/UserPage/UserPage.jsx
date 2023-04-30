@@ -11,7 +11,7 @@ function UserPage() {
   return (
     <div className="container">
       <Typography variant="h2">Welcome, {user.username}!</Typography>
-      <Typography>Your ID is: {user.id}</Typography>
+      {/* <Typography>Your ID is: {user.id}</Typography> */}
       {user.access_level === 'vendor' && <BioForm />}
       {/* <LogOutButton className="btn" /> */}
     </div>

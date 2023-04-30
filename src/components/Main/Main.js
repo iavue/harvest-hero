@@ -138,7 +138,7 @@ function Main() {
 
         <div>
             {items.map(item => (
-                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto' }}>
+                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto', mb: '10px' }}>
                     <CardMedia component="img" image={item.image_path} alt={item.title} sx={{ width: '40%' }} />
                     <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '60%' }}>
                         <Typography variant="h5" component="h2" gutterBottom>

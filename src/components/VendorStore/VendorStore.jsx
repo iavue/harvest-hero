@@ -95,10 +95,10 @@ function VendorStore() {
         ) : (
             <Typography>More information about vendor coming soon!</Typography>
         )}
-        <Typography variant="h3" sx={{ ml: 10 }}>Items Available Today</Typography>
+        <Typography variant="h3" sx={{ textAlign: 'center', mb: "10px" }}>Items Available Today</Typography>
         {items.length ? (
             items.map((item) => (
-                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto' }}>
+                <Card key={item.id} sx={{ display: 'flex', maxWidth: '400px', margin: 'auto', mb: '10px' }}>
                 <CardMedia component="img" image={item.image_path} alt={item.title} sx={{ width: '40%' }} />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '60%' }}>
                     <Typography variant="h5" component="h2" gutterBottom>
