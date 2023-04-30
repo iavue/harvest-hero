@@ -104,10 +104,10 @@ function VendorsItemsList() {
 
         return filteredItems.length ? (
             filteredItems.map((item) => (
-                <Paper elevation={1} sx={{ maxWidth: 280, mb: 4, mx: "auto", p: 2 }}>
+                <Paper elevation={2} sx={{ maxWidth: 334, mb: 2, mx: 'auto', p: 2 }}>
                     <Box key={item.id}>
-                        <img src={item.image_path} style={{ maxWidth: '200px' }} alt={item.title} />
-                        <Typography variant="h5" sx={{ mt: 2 }}>{item.title}</Typography>
+                        <img src={item.image_path} style={{ maxWidth: '300px' }} alt={item.title} />
+                        <Typography variant="h5" sx={{ mt: 0 }}>{item.title}</Typography>
                         <Typography sx={{ mt: 2 }}>{item.description}</Typography>
                         {item.user_id === user.id ? (
                             <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -135,7 +135,7 @@ function VendorsItemsList() {
         );
     };
 
-    return <ul>{render()}</ul>;
+    return <>{render()}</>;
 }
 
 export default VendorsItemsList;

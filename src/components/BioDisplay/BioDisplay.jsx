@@ -64,7 +64,7 @@ function BioDisplay() {
         return filteredBio.length ? (
             filteredBio.map((singleBio) => (
                 <div className="motherContainer" key={singleBio.id}>
-                    <Box backgroundColor="#ffffff" sx={{ p: 3, boxShadow: 3, borderRadius: 1, width: "263px" }}>
+                    <Box backgroundColor="#ffffff" sx={{ p: 3, boxShadow: 3, borderRadius: 1, width: "320px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                             <Typography variant="h4">{singleBio.vendor_name}</Typography>
                             <Box sx={{ ml: 2 }}>
