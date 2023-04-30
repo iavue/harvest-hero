@@ -231,7 +231,7 @@ function Nav() {
                 />
                 <BottomNavigationAction
                   component={Link}
-                  to="/favorites"
+                  to="/cart"
                   label="Cart"
                   icon={<ShoppingCartOutlinedIcon />}
                 />

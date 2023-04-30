@@ -21,7 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddNewItem from '../AddNewItem/AddNewItem';
 import Main from '../Main/Main';
-import Favorites from '../Favorites/Favorites';
+import Cart from '../Cart/Cart';
 import VendorBioForm from '../VendorBioForm/VendorBioForm';
 import VendorStore from '../VendorStore/VendorStore';
 
@@ -91,11 +91,11 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows Favorites else shows LoginPage
+            // logged in shows Cart else shows LoginPage
             exact
-            path="/favorites"
+            path="/cart"
           >
-            <Favorites />
+            <Cart />
           </ProtectedRoute>
 
           <ProtectedRoute

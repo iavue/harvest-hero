@@ -1,0 +1,18 @@
+.remove-cart {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    /* Remove border */
+    color: black;
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Display as a block element */
+    font-size: 16px;
+    /* Increase font size */
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    /* Add cursor on hover */
+}
