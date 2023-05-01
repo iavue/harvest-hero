@@ -125,6 +125,7 @@ function AddNewItem() {
                 <input type="file" name="image" onChange={handleImageChange} />
 
                 <TextField
+                    sx={{backgroundColor: "white"}}
                     id="1"
                     label="Title"
                     variant="outlined"
@@ -133,6 +134,7 @@ function AddNewItem() {
                 />
 
                 <TextField
+                    sx={{backgroundColor: "white"}}
                     id="2"
                     label="Description"
                     variant="outlined"

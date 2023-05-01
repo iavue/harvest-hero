@@ -81,8 +81,9 @@ function VendorStore() {
                             </Box>
                         </Box>
                         <Typography variant="subtitle1" gutterBottom>
-                            Payment methods accepted: {singleBio.pmt_methods}
+                            Payment options: 
                         </Typography>
+                        <Typography sx={{ mb: '10px'}}>{singleBio.pmt_methods}</Typography>
                         <Typography variant="body1" gutterBottom>
                             {singleBio.bio_description}
                         </Typography>
